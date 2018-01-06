@@ -1,0 +1,12 @@
+.message-variant(@background; @border; @text-color) {
+  background-color: @background;
+  border-color: darken(@border, 30%);
+  color: @text-color;
+
+  hr {
+    border-top-color: darken(@border, 5%);
+  }
+  .note-heading {
+    color: darken(@text-color, 10%);
+  }
+}

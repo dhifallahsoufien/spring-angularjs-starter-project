@@ -1,0 +1,50 @@
+// Pagination
+
+.pagination-size(@padding-vertical; @padding-horizontal; @font-size; @border-radius) {
+  > li {
+    > a,
+    > span {
+      padding: @padding-vertical @padding-horizontal;
+      font-size: @font-size;
+    }
+    &:first-child {
+      > a,
+      > span {
+        .border-left-radius(@border-radius);
+      }
+    }
+    &:last-child {
+      > a,
+      > span {
+        .border-right-radius(@border-radius);
+      }
+    }
+  }
+}
+
+.variant-pagination(@color){
+  > li {
+    > a,
+    > span {
+	  color: @color;
+	}
+  }
+  
+  > .active > a,
+  > .active > span {
+    &,
+    &:hover,
+    &:focus {
+      background-color: @color;
+      border-color:@color;
+    }
+  }  
+  
+  > li > a,
+  > li > span {
+    &:hover,
+    &:focus {
+      color: darken(@color, 20%);
+    }
+  }
+}

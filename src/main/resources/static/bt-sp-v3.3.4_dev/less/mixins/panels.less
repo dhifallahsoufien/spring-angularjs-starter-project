@@ -1,0 +1,27 @@
+// Panels
+
+.panel-variant(@color; @text: darken(@color, 60%); @border: lighten(@color, 5%);) {
+  border-color: @border;
+
+  & > .panel-heading {
+    color: @text;
+    background-color: @color;
+    border-color: @border;
+
+    + .panel-collapse > .panel-body {
+      border-top-color: @border;
+    }
+    .badge {
+      color: @text;
+      background-color: @color;
+    }
+  }
+  & > .panel-footer {
+  	color: @text;
+    background-color: lighten(@color, 10%);
+    border-color: @border;
+    + .panel-collapse > .panel-body {
+      border-bottom-color: lighten(@border, 10%);
+    }
+  }
+}

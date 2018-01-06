@@ -1,0 +1,157 @@
+//
+// Badges
+// --------------------------------------------------
+
+
+// Base class
+.badge {
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: @font-size-small;
+  font-weight: @badge-font-weight;
+  color: @badge-color;
+  line-height: @badge-line-height;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-align: center;
+  background-color: @badge-bg;
+  border-radius: @badge-border-radius;
+
+  // Empty badges collapse automatically (not available in IE8)
+  &:empty {
+    display: none;
+  }
+
+  // Quick fix for badges in buttons
+  .btn & {
+    position: relative;
+    top: -1px;
+  }
+
+  .btn-xs &,
+  .btn-group-xs > .btn & {
+    top: 0;
+    padding: 1px 5px;
+  }
+
+  // Hover state, but only for links
+  a& {
+    &:hover,
+    &:focus {
+      color: @badge-link-hover-color;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+
+  // Account for badges in navs
+  .list-group-item.active > &,
+  .nav-pills > .active > a > & {
+    color: @badge-active-color;
+    background-color: @badge-active-bg;
+  }
+
+  .list-group-item > & {
+    float: right;
+  }
+
+  .list-group-item > & + & {
+    margin-right: 5px;
+  }
+
+  .nav-pills > li > a > & {
+    margin-left: 3px;
+  }
+}
+
+// Ajout SP //
+.badge-default {
+  .badge-variant(@badge-default-bg);
+}
+a {
+  &:hover .badge-default,
+  &:focus .badge-default {
+    .link-badge-variant(@badge-default-bg);
+  }
+}
+
+.badge-primary {
+  .badge-variant(@badge-primary-bg);
+}
+a {
+  &:hover .badge-primary,
+  &:focus .badge-primary {
+    .link-badge-variant(@badge-primary-bg);
+  }
+}
+
+.badge-success {
+  .badge-variant(@badge-success-bg);
+}
+a {
+  &:hover .badge-success,
+  &:focus .badge-success {
+    .link-badge-variant(@badge-success-bg);
+  }
+}
+
+.badge-info {
+  .badge-variant(@badge-info-bg);
+}
+a {
+  &:hover .badge-info,
+  &:focus .badge-info {
+    .link-badge-variant(@badge-info-bg);
+  }
+}
+
+.badge-warning {
+  .badge-variant(@badge-warning-bg);
+}
+a {
+  &:hover .badge-warning,
+  &:focus .badge-warning {
+    .link-badge-variant(@badge-warning-bg);
+  }
+}
+
+.badge-danger {
+  .badge-variant(@badge-danger-bg);
+}
+a {
+  &:hover .badge-danger,
+  &:focus .badge-danger {
+    .link-badge-variant(@badge-danger-bg);
+  }
+}
+
+.badge-inverse {
+  .badge-variant(@badge-inverse-bg);
+}
+a {
+  &:hover .badge-inverse,
+  &:focus .badge-inverse {
+    .link-badge-variant(@badge-inverse-bg);
+  }
+}
+
+.badge-purple {
+  .badge-variant(@badge-purple-bg);
+}
+a {
+  &:hover .badge-purple,
+  &:focus .badge-purple {
+    .link-badge-variant(@badge-purple-bg);
+  }
+}
+
+.badge-pink {
+  .badge-variant(@badge-pink-bg);
+}
+a {
+  &:hover .badge-pink,
+  &:focus .badge-pink {
+    .link-badge-variant(@badge-pink-bg);
+  }
+}

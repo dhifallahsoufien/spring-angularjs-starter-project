@@ -1,0 +1,130 @@
+//
+// Labels
+// --------------------------------------------------
+
+.label {
+  display: inline-block;
+  padding: .4em .6em .4em;
+  font-size: 75%;
+  font-weight: bold;
+  line-height: 1;
+  color: @label-color;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+
+  // Add hover effects, but only for links
+  a& {
+    &:hover,
+    &:focus {
+      color: @label-link-hover-color;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+
+  // Empty labels collapse automatically (not available in IE8)
+  &:empty {
+    display: none;
+  }
+
+  // Quick fix for labels in buttons
+  .btn & {
+    position: relative;
+    top: -1px;
+  }
+}
+
+// Colors
+// Contextual variations (linked labels get darker on :hover)
+
+.label-default {
+  .label-variant(@label-default-bg);
+}
+a {
+  &:hover .label-default,
+  &:focus .label-default {
+    .link-label-variant(@label-default-bg);
+  }
+}
+
+.label-primary {
+  .label-variant(@label-primary-bg);
+}
+a {
+  &:hover .label-primary,
+  &:focus .label-primary {
+    .link-label-variant(@label-primary-bg);
+  }
+}
+
+.label-success {
+  .label-variant(@label-success-bg);
+}
+a {
+  &:hover .label-success,
+  &:focus .label-success {
+    .link-label-variant(@label-success-bg);
+  }
+}
+
+.label-info {
+  .label-variant(@label-info-bg);
+}
+a {
+  &:hover .label-info,
+  &:focus .label-info {
+    .link-label-variant(@label-info-bg);
+  }
+}
+
+.label-warning {
+  .label-variant(@label-warning-bg);
+}
+a {
+  &:hover .label-warning,
+  &:focus .label-warning {
+    .link-label-variant(@label-warning-bg);
+  }
+}
+
+.label-danger {
+  .label-variant(@label-danger-bg);
+}
+a {
+  &:hover .label-danger,
+  &:focus .label-danger {
+    .link-label-variant(@label-danger-bg);
+  }
+}
+
+.label-inverse {
+  .label-variant(@label-inverse-bg);
+}
+a {
+  &:hover .label-inverse,
+  &:focus .label-inverse {
+    .link-label-variant(@label-inverse-bg);
+  }
+}
+
+.label-purple {
+  .label-variant(@label-purple-bg);
+}
+a {
+  &:hover .label-purple,
+  &:focus .label-purple {
+    .link-label-variant(@label-purple-bg);
+  }
+}
+
+.label-pink {
+  .label-variant(@label-pink-bg);
+}
+a {
+  &:hover .label-pink,
+  &:focus .label-pink {
+    .link-label-variant(@label-pink-bg);
+  }
+}

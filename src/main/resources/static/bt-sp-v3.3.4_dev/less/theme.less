@@ -1,0 +1,337 @@
+
+//
+// Load core variables and mixins
+// --------------------------------------------------
+
+@import "variables.less";
+@import "mixins.less";
+
+
+//
+// Buttons
+// --------------------------------------------------
+
+// Common styles
+.btn-default,
+.btn-primary,
+.btn-success,
+.btn-info,
+.btn-warning,
+.btn-danger,
+.btn-inverse,
+.btn-purple,
+.btn-pink {
+  text-shadow: 0 -1px 0 rgba(0,0,0,.2);
+  @shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075);
+  .box-shadow(@shadow);
+
+  // Reset the shadow
+  &:active,
+  &.active {
+    .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+  }
+
+  .badge {
+    text-shadow: none;
+  }
+}
+
+// Mixin for generating new styles
+.btn-styles(@btn-color: #555) {
+  #gradient > .vertical(@start-color: @btn-color; @end-color: darken(@btn-color, 12%));
+  .reset-filter(); // Disable gradients for IE9 because filter bleeds through rounded corners; see https://github.com/twbs/bootstrap/issues/10620
+  background-repeat: repeat-x;
+  border-color: darken(@btn-color, 14%);
+
+  &:hover,
+  &:focus  {
+    background-color: darken(@btn-color, 12%);
+    background-position: 0 -15px;
+  }
+
+  &:active,
+  &.active {
+    background-color: darken(@btn-color, 12%);
+    border-color: darken(@btn-color, 14%);
+  }
+
+  &.disabled,
+  &:disabled,
+  &[disabled] {
+    background-color: darken(@btn-color, 12%);
+    background-image: none;
+  }
+}
+
+// Common styles
+.btn {
+  // Remove the gradient for the pressed/active state
+  &:active,
+  &.active {
+    background-image: none;
+  }
+}
+
+// Apply the mixin to the buttons
+.btn-default { .btn-styles(@btn-default-bg); text-shadow: 0 1px 0 #fff; border-color: #ccc; }
+.btn-primary { .btn-styles(@btn-primary-bg); }
+.btn-success { .btn-styles(@btn-success-bg); }
+.btn-info    { .btn-styles(@btn-info-bg); }
+.btn-warning { .btn-styles(@btn-warning-bg); }
+.btn-danger  { .btn-styles(@btn-danger-bg); }
+.btn-inverse { .btn-styles(@btn-inverse-bg); }
+.btn-purple  { .btn-styles(@btn-purple-bg); }
+.btn-pink    { .btn-styles(@btn-pink-bg); }
+
+
+
+//
+// Images
+// --------------------------------------------------
+
+.thumbnail,
+.img-thumbnail {
+  .box-shadow(0 1px 2px rgba(0,0,0,.075));
+}
+
+
+//
+// Dropdowns
+// --------------------------------------------------
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  #gradient > .vertical(@start-color: @dropdown-link-hover-bg; @end-color: darken(@dropdown-link-hover-bg, 5%));
+  background-color: darken(@dropdown-link-hover-bg, 5%);
+}
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
+  #gradient > .vertical(@start-color: @dropdown-link-active-bg; @end-color: darken(@dropdown-link-active-bg, 5%));
+  background-color: darken(@dropdown-link-active-bg, 5%);
+}
+
+.dropdown-menu-default > .active > a {
+  .dropdowns-variant-theme(@text-muted);
+}
+
+.dropdown-menu-success > .active > a {
+  .dropdowns-variant-theme(@brand-success);
+}
+
+.dropdown-menu-info > .active > a {
+  .dropdowns-variant-theme(@brand-info);
+}
+
+.dropdown-menu-warning > .active > a {
+  .dropdowns-variant-theme(@brand-warning);
+}
+
+.dropdown-menu-danger > .active > a {
+  .dropdowns-variant-theme(@brand-danger);
+}
+
+.dropdown-menu-inverse > .active > a {
+  .dropdowns-variant-theme(@brand-inverse);
+}
+
+.dropdown-menu-purple > .active > a {
+  .dropdowns-variant-theme(@brand-purple);
+}
+
+.dropdown-menu-pink > .active > a {
+  .dropdowns-variant-theme(@brand-pink);
+}
+
+//
+// Navbar
+// --------------------------------------------------
+
+
+.navbar-default { .navbar-styles(@brand-default, 0); }
+.navbar-primary { .navbar-styles(@brand-primary, 0); }
+.navbar-success { .navbar-styles(@brand-success, 0); }
+.navbar-warning { .navbar-styles(@brand-warning, 0); }
+.navbar-danger  { .navbar-styles(@brand-danger, 0); }
+.navbar-info    { .navbar-styles(@brand-info, 0); }
+.navbar-inverse { .navbar-styles(@gray-dark, 1); }
+.navbar-purple  { .navbar-styles(@brand-purple, 0); }
+.navbar-pink    { .navbar-styles(@brand-pink, 0); }
+
+// Undo rounded corners in static and fixed navbars
+.navbar-static-top,
+.navbar-fixed-top,
+.navbar-fixed-bottom {
+  border-radius: 0;
+}
+
+// Fix active state of dropdown items in collapsed mode
+@media (max-width: @grid-float-breakpoint-max) {
+  .navbar.navbar-default,
+  .navbar.navbar-primary,
+  .navbar.navbar-success,
+  .navbar.navbar-warning,
+  .navbar.navbar-danger,
+  .navbar.navbar-info,
+  .navbar.navbar-purple,
+  .navbar.navbar-pink    {
+  	.navbar-collapsed-mode(0);
+  }
+  .navbar.navbar-inverse {
+  	.navbar-collapsed-mode(1);
+  }
+}
+.navbar.navbar-autocollapse.collapsed.navbar-default,
+.navbar.navbar-autocollapse.collapsed.navbar-primary,
+.navbar.navbar-autocollapse.collapsed.navbar-success,
+.navbar.navbar-autocollapse.collapsed.navbar-warning,
+.navbar.navbar-autocollapse.collapsed.navbar-danger,
+.navbar.navbar-autocollapse.collapsed.navbar-info,
+.navbar.navbar-autocollapse.collapsed.navbar-purple,
+.navbar.navbar-autocollapse.collapsed.navbar-pink {
+	.navbar-collapsed-mode(0);
+}
+.navbar.navbar-autocollapse.collapsed.navbar-inverse {
+	.navbar-collapsed-mode(1);
+}
+
+
+//
+// Alerts
+// --------------------------------------------------
+
+// Common styles
+.alert {
+  text-shadow: 0 1px 0 rgba(255,255,255,.2);
+  @shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 1px 2px rgba(0,0,0,.05);
+  .box-shadow(@shadow);
+}
+
+// Mixin for generating new styles
+.alert-styles(@color) {
+  #gradient > .vertical(@start-color: @color; @end-color: darken(@color, 7.5%));
+  border-color: darken(@color, 15%);
+}
+
+// Apply the mixin to the alerts
+.alert-success    { .alert-styles(@alert-success-bg); }
+.alert-info       { .alert-styles(@alert-info-bg); }
+.alert-warning    { .alert-styles(@alert-warning-bg); }
+.alert-danger     { .alert-styles(@alert-danger-bg); }
+.alert-inverse    { .alert-styles(@alert-inverse-bg); }
+.alert-purple     { .alert-styles(@alert-purple-bg); }
+.alert-pink       { .alert-styles(@alert-pink-bg); }
+
+
+
+//
+// Progress bars
+// --------------------------------------------------
+
+// Give the progress background some depth
+.progress {
+  #gradient > .vertical(@start-color: darken(@progress-bg, 4%); @end-color: @progress-bg)
+}
+
+// Mixin for generating new styles
+.progress-bar-styles(@color) {
+  #gradient > .vertical(@start-color: @color; @end-color: darken(@color, 10%));
+}
+
+// Apply the mixin to the progress bars
+.progress-bar            { .progress-bar-styles(@progress-bar-bg); }
+.progress-bar-success    { .progress-bar-styles(@progress-bar-success-bg); }
+.progress-bar-info       { .progress-bar-styles(@progress-bar-info-bg); }
+.progress-bar-warning    { .progress-bar-styles(@progress-bar-warning-bg); }
+.progress-bar-danger     { .progress-bar-styles(@progress-bar-danger-bg); }
+.progress-bar-inverse    { .progress-bar-styles(@progress-bar-inverse-bg); }
+.progress-bar-purple     { .progress-bar-styles(@progress-bar-purple-bg); }
+.progress-bar-pink       { .progress-bar-styles(@progress-bar-pink-bg); }
+
+// Reset the striped class because our mixins don't do multiple gradients and
+// the above custom styles override the new `.progress-bar-striped` in v3.2.0.
+.progress-bar-striped {
+  #gradient > .striped();
+}
+
+
+//
+// List groups
+// --------------------------------------------------
+
+.list-group {
+  border-radius: @border-radius-base;
+  .box-shadow(0 1px 2px rgba(0,0,0,.075));
+}
+
+.list-group-item.active           			  { .variant-list-group-item(@list-group-active-bg, @list-group-active-border); }
+.list-group-success .list-group-item.active	  { .variant-list-group-item(@brand-success, @brand-success); }
+.list-group-info .list-group-item.active      { .variant-list-group-item(@brand-info, @brand-info); }
+.list-group-warning .list-group-item.active   { .variant-list-group-item(@brand-warning, @brand-warning); }
+.list-group-danger .list-group-item.active    { .variant-list-group-item(@brand-danger, @brand-danger); }
+.list-group-inverse .list-group-item.active   { .variant-list-group-item(@brand-inverse, @brand-inverse); }
+.list-group-purple .list-group-item.active    { .variant-list-group-item(@brand-purple, @brand-purple); }
+.list-group-pink .list-group-item.active      { .variant-list-group-item(@brand-pink, @brand-pink); }
+
+
+//
+// Panels
+// --------------------------------------------------
+
+// Common styles
+.panel {
+  .box-shadow(0 1px 2px rgba(0,0,0,.05));
+}
+.panel-heading {
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+.panel-body {
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1) inset, 0 1px 0 0 rgba(255, 255, 255, 0.1);
+}
+.panel-footer {
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1) inset, 0 1px 0 0 rgba(255, 255, 255, 0.1);
+}
+
+// Mixin for generating new styles
+.panel-heading-styles(@color) {
+  #gradient > .vertical(@start-color: lighten(@color, 15%); @end-color: lighten(@color,5%));
+  
+}
+.panel-footer-styles(@color) {
+  #gradient > .vertical(@start-color: lighten(@color, 15%); @end-color: @color);
+}
+
+// Apply the mixin to the panel headings only
+.panel-default > .panel-heading   { .panel-heading-styles(lighten(#000, 85%)); }
+.panel-primary > .panel-heading   { .panel-heading-styles(@brand-primary); }
+.panel-success > .panel-heading   { .panel-heading-styles(@brand-success); }
+.panel-info > .panel-heading      { .panel-heading-styles(@brand-info); }
+.panel-warning > .panel-heading   { .panel-heading-styles(@brand-warning); }
+.panel-danger > .panel-heading    { .panel-heading-styles(@brand-danger); }
+.panel-inverse > .panel-heading   { .panel-heading-styles(@brand-inverse); }
+.panel-purple > .panel-heading    { .panel-heading-styles(@brand-purple); }
+.panel-pink > .panel-heading      { .panel-heading-styles(@brand-pink); }
+
+// Ajout des dégradés des footer du panel
+.panel-default > .panel-footer    { .panel-footer-styles(lighten(#000, 85%)); }
+.panel-primary > .panel-footer    { .panel-footer-styles(@brand-primary); }
+.panel-success > .panel-footer    { .panel-footer-styles(@brand-success); }
+.panel-info > .panel-footer       { .panel-footer-styles(@brand-info); }
+.panel-warning > .panel-footer    { .panel-footer-styles(@brand-warning); }
+.panel-danger > .panel-footer     { .panel-footer-styles(@brand-danger); }
+.panel-inverse > .panel-footer    { .panel-footer-styles(@brand-inverse); }
+.panel-purple > .panel-footer     { .panel-footer-styles(@brand-purple); }
+.panel-pink > .panel-footer       { .panel-footer-styles(@brand-pink); }
+
+
+
+//
+// Wells
+// --------------------------------------------------
+
+.well {
+  #gradient > .vertical(@start-color: darken(@well-bg, 5%); @end-color: @well-bg);
+  border-color: darken(@well-bg, 10%);
+  @shadow: inset 0 1px 3px rgba(0,0,0,.05), 0 1px 0 rgba(255,255,255,.1);
+  .box-shadow(@shadow);
+}

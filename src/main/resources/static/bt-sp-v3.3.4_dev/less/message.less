@@ -1,0 +1,62 @@
+//
+// Alerts
+// --------------------------------------------------
+
+
+// Base styles
+// -------------------------
+
+.message {
+  margin: 0 0 20px 0;
+  padding: 15px 30px 15px 15px;
+  border-left: 5px solid transparent;
+
+  // Headings for larger alerts
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin-top: 0;
+    // Specified for the h4 to prevent conflicts of changing @headings-color
+    color: inherit;
+	font-weight: bold;
+  }
+
+  // Improve alignment and spacing of inner content
+  > p,
+  > ul {
+    margin-bottom: 0;
+  }
+
+  > p + p {
+    margin-top: 5px;
+  }
+}
+
+.message-success {
+  .message-variant(@alert-success-bg; @alert-success-border; @alert-success-text);
+}
+
+.message-info {
+  .message-variant(@alert-info-bg; @alert-info-border; @alert-info-text);
+}
+
+.message-warning {
+  .message-variant(@alert-warning-bg; @alert-warning-border; @alert-warning-text);
+}
+
+.message-danger {
+  .message-variant(@alert-danger-bg; @alert-danger-border; @alert-danger-text);
+}
+
+.message-inverse {
+  .message-variant(@alert-inverse-bg; @alert-inverse-border; @alert-inverse-text);
+}
+
+.message-purple {
+  .message-variant(@alert-purple-bg; @alert-purple-border; @alert-purple-text);
+}
+
+.message-pink {
+  .message-variant(@alert-pink-bg; @alert-pink-border; @alert-pink-text);
+}

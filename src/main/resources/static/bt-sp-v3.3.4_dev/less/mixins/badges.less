@@ -1,0 +1,16 @@
+// Badges
+
+.badge-variant(@color) {
+  background-color: @color;
+  
+  &[href] {
+    &:hover,
+    &:focus {
+      background-color: darken(@color, 10%);
+    }
+  }
+}
+
+.link-badge-variant(@color) {
+  background-color: darken(@color, 10%);
+}

@@ -1,0 +1,104 @@
+
+
+				<section class="card card-user" ng-controller="EditUserController" ng-init="findAllRoles()">
+					<div class="image">
+						<img src="assets/img/background.jpg" alt="..." />
+					</div>
+					<div class="content">
+						<div class="author">
+							<img class="avatar border-white"
+								src="assets/img/faces/face-2.jpg" alt="..." />
+							<h4 class="title">
+								Chet Faker<br /> <a href="#"><small>@chetfaker</small></a>
+							</h4>
+						</div>
+						<form name="registerForm">
+			
+						
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Login</label> <input type="text"
+												class="form-control border-input" placeholder="Login"
+												ng-model="user.username"> <span ng-if="errors"
+												class="errorRequired">{{errors.username}}</span>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="exampleInputEmail1">Email</label> <input
+												type="email" class="form-control border-input"
+												placeholder="Email" ng-model="user.email"> <span
+												ng-if="errors" class="errorRequired">{{errors.email}}</span>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Surname</label> <input type="text"
+												class="form-control border-input" placeholder="Prènom"
+												ng-model="user.firstName"> <span ng-if="errors"
+												class="errorRequired">{{errors.prenom}}</span>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Name</label> <input type="text"
+												class="form-control border-input" placeholder="Nom"
+												ng-model="user.lastName"> <span ng-if="errors"
+												class="errorRequired">{{errors.nom}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group"
+											ng-class="{'has-error': registerForm.$dirty && registerForm.Password.$invalid, 'has-success': registerForm.Password.$valid}">
+											<label for="Password">Mot de passe</label> <input
+												type="password" name="Password" required ng-minlength="6"
+												class="form-control border-input" placeholder="Mot de passe"
+												ng-model="user.password" /> <span ng-if="errors">{{errors.password}}</span>
+											<span class="errorRequired"
+												ng-show="registerForm.Password.$error.minlength">
+												Doit contenir au minimum 6 caractères </span>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Confirmer mot de passe</label> <input type="password"
+												class="form-control border-input" placeholder="Mot de passe"
+												ng-model="user.confmPassword"> <span ng-if="errors"
+												class="errorRequired">{{errors.confmPassword}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group">
+											<label ng-repeat="role in roles.data"> <input
+												type="checkbox" ng-click="toggle(role)" value="role" ng-checked="exists(role,user.role)"
+												class="label-primary"> {{role.roleName}}
+											</label>
+										</div>
+									</div>
+								</div>
+
+								<div class="text-center">
+									<button type="submit" class="btn btn-info btn-fill btn-wd"
+										ng-click="editUser()">Save</button>
+								</div>
+								<div class="clearfix"></div>
+							</form>
+						</div>
+			
+	
+				
+			
+			
+
+
+</section>
+
+

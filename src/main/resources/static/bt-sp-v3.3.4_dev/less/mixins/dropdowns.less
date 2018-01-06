@@ -1,0 +1,19 @@
+.dropdowns-variant(@color) {
+  &,
+  &:hover,
+  &:focus {
+    color: @dropdown-link-active-color;
+    text-decoration: none;
+    outline: 0;
+    background-color: @color;
+  }
+}
+
+.dropdowns-variant-theme(@color) {
+  &,
+  &:hover,
+  &:focus {
+    #gradient > .vertical(@start-color: @color; @end-color: darken(@color, 5%));
+	background-color: darken(@color, 5%);
+  }
+}

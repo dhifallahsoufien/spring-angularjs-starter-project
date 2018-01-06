@@ -1,0 +1,392 @@
+//
+// Navs
+// --------------------------------------------------
+
+
+// Base class
+// --------------------------------------------------
+
+.nav {
+  margin-bottom: 0;
+  padding-left: 0; // Override default ul/ol
+  list-style: none;
+  &:extend(.clearfix all);
+
+  > li {
+    position: relative;
+    display: block;
+
+    > a {
+      position: relative;
+      display: block;
+      padding: @nav-link-padding;
+      &:hover,
+      &:focus {
+        text-decoration: none;
+        background-color: @nav-link-hover-bg;
+      }
+    }
+
+    // Disabled state sets text to gray and nukes hover/tab effects
+    &.disabled > a {
+      color: @nav-disabled-link-color;
+
+      &:hover,
+      &:focus {
+        color: @nav-disabled-link-hover-color;
+        text-decoration: none;
+        background-color: transparent;
+        cursor: @cursor-disabled;
+      }
+    }
+  }
+
+  // Open dropdowns
+  .open > a {
+    &,
+    &:hover,
+    &:focus {
+	  outline: none;
+      background-color: @nav-link-hover-bg;
+      border-color: @link-color;
+    }
+  }
+
+  // Nav dividers (deprecated with v3.0.1)
+  //
+  // This should have been removed in v3 with the dropping of `.nav-list`, but
+  // we missed it. We don't currently support this anywhere, but in the interest
+  // of maintaining backward compatibility in case you use it, it's deprecated.
+  .nav-divider {
+    .nav-divider();
+  }
+
+  // Prevent IE8 from misplacing imgs
+  //
+  // See https://github.com/h5bp/html5-boilerplate/issues/984#issuecomment-3985989
+  > li > a > img {
+    max-width: none;
+  }
+}
+
+// Tabs
+// -------------------------
+
+// Give the tabs something to sit on
+.nav-tabs {
+  border-bottom: 1px solid @nav-tabs-border-color;
+  > li {
+    float: left;
+    // Make the list-items overlay the bottom border
+    margin-bottom: -1px;
+
+    // Actual tabs (as links)
+    > a {
+      margin-right: 2px;
+      line-height: @line-height-base;
+      border: 1px solid transparent;
+      border-radius: @border-radius-base @border-radius-base 0 0;
+      &:hover {
+        border-color: @nav-tabs-link-hover-border-color @nav-tabs-link-hover-border-color @nav-tabs-border-color;
+      }
+    }
+
+    // Active state, and its :hover to override normal :hover
+    &.active > a {
+      &,
+      &:hover,
+      &:focus {
+	  	outline: none;
+        color: @nav-tabs-active-link-hover-color;
+        background-color: @nav-tabs-active-link-hover-bg;
+        border: 1px solid @nav-tabs-active-link-hover-border-color;
+        border-bottom-color: transparent;
+        cursor: default;
+      }
+    }
+  }
+  // pulling this in mainly for less shorthand
+  &.nav-justified {
+    .nav-justified();
+    .nav-tabs-justified();
+  }
+}
+
+.nav-tabs.nav-success,
+.nav-tabs.nav-info,
+.nav-tabs.nav-warning,
+.nav-tabs.nav-danger,
+.nav-tabs.nav-inverse,
+.nav-tabs.nav-purple,
+.nav-tabs.nav-pink {
+	> li {
+		&.active > a {
+			&,
+			&:hover,
+			&:focus {
+				background-color: @nav-tabs-active-link-hover-bg;
+			}
+		}
+	}
+}
+
+.nav-border-color 				{ .variant-nav-border-color(@brand-primary); }
+.nav-border-color.nav-success 	{ .variant-nav-border-color(@brand-success); }
+.nav-border-color.nav-info 		{ .variant-nav-border-color(@brand-info); }
+.nav-border-color.nav-warning 	{ .variant-nav-border-color(@brand-warning); }
+.nav-border-color.nav-danger 	{ .variant-nav-border-color(@brand-danger); }
+.nav-border-color.nav-inverse 	{ .variant-nav-border-color(@brand-inverse); }
+.nav-border-color.nav-purple 	{ .variant-nav-border-color(@brand-purple); }
+.nav-border-color.nav-pink 		{ .variant-nav-border-color(@brand-pink); }
+
+// Pills
+// -------------------------
+.nav-pills {
+  > li {
+    float: left;
+
+    // Links rendered as pills
+    > a {
+      border-radius: @nav-pills-border-radius;
+    }
+    + li {
+      margin-left: 2px;
+    }
+
+    // Active state
+    &.active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @nav-pills-active-link-hover-color;
+        background-color: @nav-pills-active-link-hover-bg;
+      }
+    }
+  }
+}
+
+
+// Stacked pills
+.nav-stacked {
+  > li {
+    float: none;
+    + li {
+      margin-top: 2px;
+      margin-left: 0; // no need for this gap between nav items
+    }
+  }
+}
+
+.nav-pills > li.active {
+  & > a {
+	& .caret,
+	&:hover .caret,
+	&:focus .caret {
+	  border-top-color: @nav-pills-active-link-hover-color;
+  	  border-bottom-color: @nav-pills-active-link-hover-color;
+	}
+  }
+}
+
+// Stacked pills
+.nav.nav-stacked-left {
+  border-right: @nav-pills-border;
+  padding-right: @nav-pills-padding;
+  margin-right: @nav-pills-margin;
+}
+.nav.nav-stacked-right {
+  border-left: @nav-pills-border;
+  padding-left: @nav-pills-padding;
+  margin-left: @nav-pills-margin;
+}
+
+.nav-success 	{ .variant-nav(@brand-success, darken(@brand-success, 10%)); }
+.nav-info 		{ .variant-nav(@brand-info, darken(@brand-info, 10%)); }
+.nav-warning 	{ .variant-nav(@brand-warning, darken(@brand-warning, 10%)); }
+.nav-danger 	{ .variant-nav(@brand-danger, darken(@brand-danger, 10%)); }
+.nav-inverse 	{ .variant-nav(@brand-inverse, darken(@brand-inverse, 10%)); }
+.nav-purple 	{ .variant-nav(@brand-purple, darken(@brand-purple, 10%)); }
+.nav-pink 		{ .variant-nav(@brand-pink, darken(@brand-pink, 10%)); }
+
+
+// nav-tabs alternative
+// -------------------------
+
+.nav-tabs-alt {
+  border-bottom: 2px solid @nav-tabs-border-color;
+  > li {
+    float: left;
+    // Make the list-items overlay the bottom border
+    margin-bottom: -2px;
+
+    // Actual tabs (as links)	
+    > a {
+      line-height: @line-height-base;
+	  border-bottom: 2px solid transparent;
+	  padding: 5px 15px;
+      &:hover {
+        background: 0;
+		border-bottom-color: @brand-primary;
+      }
+    }
+
+    // Active state, and its :hover to override normal :hover
+    &.active > a {
+      &,
+      &:hover,
+      &:focus {
+	  	outline: none;
+        margin-bottom: -2px;
+        border-bottom-color: @brand-primary;
+        cursor: default;
+		background: 0;
+      }
+    }
+	&.disabled > a {
+      &:hover,
+      &:focus {
+        margin-bottom: -2px;
+        border-bottom-color: @nav-tabs-border-color;
+		background: 0;
+      }
+    }
+  }
+  // pulling this in mainly for less shorthand
+  &.nav-justified {
+    width: 100%;
+
+	> li {
+	  float: none;
+	  > a {
+		text-align: center;
+	  }
+	}
+  
+	> .dropdown .dropdown-menu {
+	  top: auto;
+	  left: auto;
+	}
+  
+	@media (min-width: @screen-sm-min) {
+	  > li {
+		display: table-cell;
+		width: 1%;
+		> a {
+		  margin-bottom: -2px;
+		}
+	  }
+	}
+  }
+}
+
+.nav-tabs-alt.nav-success {
+	.nav-tabs-alt-variant(@brand-success)
+}
+.nav-tabs-alt.nav-info {
+	.nav-tabs-alt-variant(@brand-info)
+}
+.nav-tabs-alt.nav-warning {
+	.nav-tabs-alt-variant(@brand-warning)
+}
+.nav-tabs-alt.nav-danger {
+	.nav-tabs-alt-variant(@brand-danger)
+}
+.nav-tabs-alt.nav-inverse {
+	.nav-tabs-alt-variant(@brand-inverse)
+}
+.nav-tabs-alt.nav-purple {
+	.nav-tabs-alt-variant(@brand-purple)
+}
+.nav-tabs-alt.nav-pink {
+	.nav-tabs-alt-variant(@brand-pink)
+}
+
+// Nav variations
+// --------------------------------------------------
+
+// Justified nav links
+// -------------------------
+
+.nav-justified {
+  width: 100%;
+
+  > li {
+    float: none;
+    > a {
+      text-align: center;
+      margin-bottom: 5px;
+    }
+  }
+
+  > .dropdown .dropdown-menu {
+    top: auto;
+    left: auto;
+  }
+
+  @media (min-width: @screen-sm-min) {
+    > li {
+      display: table-cell;
+      width: 1%;
+      > a {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+// Move borders to anchors instead of bottom of list
+//
+// Mixin for adding on top the shared `.nav-justified` styles for our tabs
+.nav-tabs-justified {
+  border-bottom: 0;
+
+  > li > a {
+    // Override margin from .nav-tabs
+    margin-right: 0;
+    border-radius: @border-radius-base;
+  }
+
+  > .active > a,
+  > .active > a:hover,
+  > .active > a:focus {
+    border: 1px solid @nav-tabs-justified-link-border-color;
+  }
+
+  @media (min-width: @screen-sm-min) {
+    > li > a {
+      border-bottom: 1px solid @nav-tabs-justified-link-border-color;
+      border-radius: @border-radius-base @border-radius-base 0 0;
+    }
+    > .active > a,
+    > .active > a:hover,
+    > .active > a:focus {
+      border-bottom-color: @nav-tabs-justified-active-link-border-color;
+    }
+  }
+}
+
+
+// Tabbable tabs
+// -------------------------
+
+// Hide tabbable panes to start, show them when `.active`
+.tab-content {
+  > .tab-pane {
+    display: none;
+  }
+  > .active {
+    display: block;
+  }
+}
+
+
+// Dropdowns
+// -------------------------
+
+// Specific dropdowns
+.nav-tabs .dropdown-menu {
+  // make dropdown border overlap tab border
+  margin-top: -1px;
+  // Remove the top rounded corners here since there is a hard edge above the menu
+  .border-top-radius(0);
+}

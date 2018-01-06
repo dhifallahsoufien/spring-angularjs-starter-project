@@ -1,0 +1,58 @@
+// List Groups
+
+.list-group-item-variant(@state; @background; @color) {
+  .list-group-item-@{state} {
+    color: @color;
+    background-color: @background;
+
+    a& {
+      color: @color;
+
+      .list-group-item-heading {
+        color: inherit;
+      }
+
+      &:hover,
+      &:focus {
+        color: @color;
+        background-color: darken(@background, 5%);
+      }
+      &.active,
+      &.active:hover,
+      &.active:focus {
+        color: #fff;
+        background-color: @color;
+        border-color: @color;
+      }
+    }
+  }
+}
+
+.variant-list-group(@color) {
+	a.list-group-item {
+	  &.active > .badge {
+		color: @color;
+	  }
+	  &.active,
+	  &.active:hover,
+	  &.active:focus {
+		background-color: @color;
+		border-color: @color;
+	  }
+	}
+}
+
+.variant-list-group-item(@color; @border) {
+	&,
+	&:hover,
+	&:focus {
+	  text-shadow: 0 -1px 0 darken(@color, 10%);
+	  background-color: @color;
+	  #gradient > .vertical(@start-color: @color; @end-color: darken(@color, 7.5%));
+	  border-color: darken(@border, 7.5%);
+	  
+	  .badge {
+		text-shadow: none;
+	  }
+	}
+}

@@ -1,0 +1,248 @@
+//-------------------------------------------------------------------------
+// .navbar-styles > @test = 1
+//-------------------------------------------------------------------------
+.navbar-styles(@color, @test) when (@test = 1) {
+  #gradient > .vertical(@start-color: lighten(@color, 10%); @end-color: darken(@color, 5%));
+  .reset-filter(); // Remove gradient in IE<10 to fix bug where dropdowns don't get triggered
+  border-radius: @navbar-border-radius;
+  @shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 5px rgba(0,0,0,.075);
+  .box-shadow(@shadow);
+
+  .navbar-nav > .open > a,
+  .navbar-nav > .active > a {
+	&,
+    &:hover,
+    &:focus {
+	  background: none repeat scroll 0 0 rgba(255, 255, 255, 0.10);
+	}
+  }
+  
+  .navbar-brand,
+  .navbar-nav > li > a {
+    text-shadow: none;
+  }
+}
+
+//-------------------------------------------------------------------------
+// .navbar-styles > @test = 0
+//-------------------------------------------------------------------------
+.navbar-styles(@color, @test) when (@test = 0) {
+  #gradient > .vertical(@start-color: lighten(@color, 7%); @end-color: darken(@color, 5%));
+  .reset-filter(); // Remove gradient in IE<10 to fix bug where dropdowns don't get triggered
+  border-radius: @navbar-border-radius;
+  @shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 5px rgba(0,0,0,.075);
+  .box-shadow(@shadow);
+
+  .navbar-nav > .open > a,
+  .navbar-nav > .active > a {
+	&,
+    &:hover,
+    &:focus {
+	  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.13);
+	}
+  }
+  
+  .navbar-brand,
+  .navbar-nav > li > a {
+    text-shadow: none;
+  }
+}
+
+//-------------------------------------------------------------------------
+// .navbar-collapsed-mode > @test = 1
+//-------------------------------------------------------------------------
+.navbar-collapsed-mode(@test) when (@test = 1) {
+  .navbar-nav .open .dropdown-menu > .active > a {
+    &,
+    &:hover,
+    &:focus {
+      color: #fff;
+	  background: none repeat scroll 0 0 rgba(255, 255, 255, 0.13);
+    }
+  }
+}
+
+//-------------------------------------------------------------------------
+// .navbar-collapsed-mode > @test = 0
+//-------------------------------------------------------------------------
+.navbar-collapsed-mode(@test) when (@test = 0) {
+  .navbar-nav .open .dropdown-menu > .active > a {
+    &,
+    &:hover,
+    &:focus {
+      color: #fff;
+	  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.13);
+    }
+  }
+}
+
+//-------------------------------------------------------------------------
+// .navbar-color-variant
+//-------------------------------------------------------------------------
+.navbar-color-variant(@class) {
+  background-color: ~"@{navbar-@{class}-bg}";
+  border-color: ~"@{navbar-@{class}-border}";
+
+  .navbar-brand {
+    color: ~"@{navbar-@{class}-brand-color}";
+    &:hover,
+    &:focus {
+      color: ~"@{navbar-@{class}-brand-hover-color}";
+      background-color: ~"@{navbar-@{class}-brand-hover-bg}";
+    }
+  }
+
+  .navbar-text {
+    color: ~"@{navbar-@{class}-color}";
+  }
+
+  .navbar-nav {
+    > li > a {
+      color: ~"@{navbar-@{class}-link-color}";
+
+      &:hover,
+      &:focus {
+        color: ~"@{navbar-@{class}-link-hover-color}";
+        background-color: ~"@{navbar-@{class}-link-hover-bg}";
+      }
+    }
+    > .active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: ~"@{navbar-@{class}-link-active-color}";
+        background-color: ~"@{navbar-@{class}-link-active-bg}";
+      }
+    }
+    > .disabled > a {
+      &,
+      &:hover,
+      &:focus {
+        color: ~"@{navbar-@{class}-link-disabled-color}";
+        background-color: ~"@{navbar-@{class}-link-disabled-bg}";
+      }
+    }
+  }
+
+  .navbar-toggle {
+    border-color: ~"@{navbar-@{class}-toggle-border-color}";
+    &:hover,
+    &:focus {
+      background-color: ~"@{navbar-@{class}-toggle-hover-bg}";
+    }
+    .icon-bar {
+      background-color: ~"@{navbar-@{class}-toggle-icon-bar-bg}";
+    }
+  }
+
+  &.navbar.navbar-autocollapse.collapsed .navbar-collapse .navbar-form,
+  .navbar-collapse,
+  .navbar-form {
+    border-color: ~"@{navbar-@{class}-divider-color-dark}";
+	@shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.1);
+  }
+
+  // Dropdown menu items
+  .navbar-nav {
+    // Remove background color from open dropdown
+    > .open > a {
+      &,
+      &:hover,
+      &:focus {
+        background-color: ~"@{navbar-@{class}-link-active-bg}";
+        color: ~"@{navbar-@{class}-link-active-color}";
+      }
+    }
+
+    @media (max-width: @grid-float-breakpoint-max) {
+      // Dropdowns get custom display when collapsed
+      .open .dropdown-menu {
+        > li > a {
+          color: ~"@{navbar-@{class}-link-color}";
+          &:hover,
+          &:focus {
+            color: ~"@{navbar-@{class}-link-hover-color}";
+            background-color: ~"@{navbar-@{class}-link-hover-bg}";
+          }
+        }
+        > .active > a {
+          &,
+          &:hover,
+          &:focus {
+            color: ~"@{navbar-@{class}-link-active-color}";
+            background-color: ~"@{navbar-@{class}-link-active-bg}";
+          }
+        }
+        > .disabled > a {
+          &,
+          &:hover,
+          &:focus {
+            color: ~"@{navbar-@{class}-link-disabled-color}";
+            background-color: ~"@{navbar-@{class}-link-disabled-bg}";
+          }
+        }
+      }
+    }
+  }
+  
+  &.navbar.navbar-autocollapse.collapsed .navbar-nav {
+	.open .dropdown-menu {
+      > li > a {
+        color: ~"@{navbar-@{class}-link-color}";
+        &:hover,
+        &:focus {
+          color: ~"@{navbar-@{class}-link-hover-color}";
+          background-color: ~"@{navbar-@{class}-link-hover-bg}";
+        }
+      }
+      > .active > a {
+        &,
+        &:hover,
+        &:focus {
+          color: ~"@{navbar-@{class}-link-active-color}";
+          background-color: ~"@{navbar-@{class}-link-active-bg}";
+        }
+      }
+      > .disabled > a {
+        &,
+        &:hover,
+        &:focus {
+          color: ~"@{navbar-@{class}-link-disabled-color}";
+          background-color: ~"@{navbar-@{class}-link-disabled-bg}";
+        }
+      }
+    }
+  }
+
+
+  // Links in navbars
+  //
+  // Add a class to ensure links outside the navbar nav are colored correctly.
+
+  .navbar-link {
+    color: ~"@{navbar-@{class}-link-color}";
+    &:hover {
+      color: ~"@{navbar-@{class}-link-hover-color}";
+    }
+  }
+
+  .btn-link {
+    color: ~"@{navbar-@{class}-link-color}";
+    &:hover,
+    &:focus {
+      color: ~"@{navbar-@{class}-link-hover-color}";
+    }
+    &[disabled],
+    fieldset[disabled] & {
+      &:hover,
+      &:focus {
+        color: ~"@{navbar-@{class}-link-disabled-color}";
+      }
+    }
+  }
+
+  &.navbar.navbar-autocollapse .navbar-collapse .nav > .divider-vertical,
+  .nav > .divider-vertical {
+	border-color: ~"@{navbar-@{class}-divider-color-dark}";
+  }
+}

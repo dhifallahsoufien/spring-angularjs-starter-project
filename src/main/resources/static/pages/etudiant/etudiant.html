@@ -1,0 +1,54 @@
+
+<section class="card" ng-controller="EtudiantController">
+	<div class="header">
+		<div class="row">
+			<div class="col-md-10">
+				<h4 class="title">Liste des etudiants</h4>
+				<p class="category"></p>
+			</div>
+			<div class="col-md-1">
+				<a href="#!addetudiant">
+					<button class="btn btn-sm btn-success btn-icon">
+						<i class="fa fa-plus"></i>
+					</button>
+				</a>
+			</div>
+			<div class="col-xs-1 text-left">
+				<button type="submit" class="btn btn-sm btn-success btn-icon"
+					ng-click="allEtudiants()">
+					<i class="fa fa-search"></i>
+				</button>
+			</div>
+		</div>
+	</div>
+	<div class="content table-responsive table-full-width">
+		<table class="table table-striped">
+			<thead>
+				<th>Nom</th>
+				<th>Prenom</th>
+				<th>date de naissance</th>
+				<th>Action</th>
+			</thead>
+			<tbody>
+				<tr dir-paginate="e in etudiants.data.content | itemsPerPage:3">
+					<td>{{e.nom}}</td>
+					<td>{{e.prenom}}</td>
+					<td>{{e.dateNaissance | date:'dd/MM/yyyy'}}</td>
+										<td><div class="form-group">
+							<a ng-click="initEditUser(e)" href="#!editetudiant" class="edit"
+								title="Modifier" data-toggle="tooltip"><i
+								class="fa fa-pencil"></i> </a>&nbsp;&nbsp;&nbsp;&nbsp; <a
+								ng-click="deleteEtudiant(e.idEtudiant)" class="delete" title="Supprimer"
+								data-toggle="tooltip"><i class="fa fa-trash"></i> </a>
+						</div></td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="text-center">
+			<div class="container spacer">
+			<dir-pagination-controls></dir-pagination-controls>
+			</div>
+		</div>
+	</div>
+</section>
+

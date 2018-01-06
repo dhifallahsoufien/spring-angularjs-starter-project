@@ -1,0 +1,21 @@
+//
+// Thumbnails
+// --------------------------------------------------
+
+
+.thumbnail-color-variant(@color;) {
+  a&:hover,
+  a&:focus,
+  a&.active {
+    border-color: @color;
+  }
+}
+
+.thumbnail-shadow-variant(@color;) {
+  a&:hover,
+  a&:focus,
+  a&.active {
+	@shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 6px lighten(@color, 20%);
+    .box-shadow(@shadow);
+  }
+}
