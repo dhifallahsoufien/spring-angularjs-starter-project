@@ -10,30 +10,30 @@ In this code example I'm demonstrating this by providing a full CRUD-based web a
 For rapidly creating prototypes of a web application, a UI toolkit or library will become really handy. There are many choices available, and for this example I chose Bootstrap.
 
 #### AngularJS 1.6
-AngularJS is a MVC based framework for web applications, written in JavaScript. It makes it possible to use the Model-View-Controller pattern on the front-end. It also comes with several additional modules. In this example I'm also using **angular-resource**, which is a simple factory-pattern based module for creating REST clients.
+AngularJS is a MVC based framework for web applications, written in JavaScript. It makes it possible to use the Model-View-Controller pattern on the front-end.
 
 ### Back-end
 
-#### Spring Boot
-One of the hassles while creating web applications using the Spring Framework is that it involves a lot of configuration. Spring Boot makes it possible to write configuration-less web application because it does a lot for you out of the box.
-For example, if you add HSQLDB as a dependency to your application, it will automatically provide a datasource to it.
-If you add the spring-boot-starter-web dependency, then you can start writing controllers for creating a web application.
-
-#### Spring Data JPA
-Spring Data JPA allows you to create repositories for your data without even having to write a lot of code. The only code you need is a simple interface that extends from another interface and then you're done.
-With Spring Boot you can even leave the configuration behind for configuring Spring Data JPA, so now it's even easier.
-
+<ul>
+<li>Spring Boot</li>
+<li>Spring Security</li>
+<li>Spring Data</li>
+<li>Spring MVC architecture</li>
+<li>RestController</li>
+<li> Maven 3+ </li>
+<li> JAVA 8 </li>
+<li>Mysql Database 5</li>
+</ul>
 
 ### Build and run
 
 #### Configurations
 
-Open the `application.properties` file and set your own configurations.
+Open the `application.properties` file and set your own configurations:
 
-#### Prerequisites
-
-- Java 8
-- Maven 3
+- Change the name schema of the database.
+- Change the port number if port 8185 is reserved.
+- Change the email configuration to end you can send emails.
 
 #### From terminal
 
@@ -49,7 +49,7 @@ Import as *Existing Maven Project* and run it as *Spring Boot App*.
 
 Authentication page
 
-![authentification](https://user-images.githubusercontent.com/19384321/34638312-58ba461a-f2c9-11e7-9c6a-30b8ba362d7c.PNG)
+![authentification](https://user-images.githubusercontent.com/19384321/34639049-9cb82756-f2d8-11e7-9924-62140fff3e14.PNG)
 
 Reset password
 
@@ -61,5 +61,5 @@ Detail user page
 
 Add user
 
-![aaduser](https://user-images.githubusercontent.com/19384321/34638489-b48ff1e4-f2cc-11e7-8219-3efa4028ef55.PNG)
+![aaduser](https://user-images.githubusercontent.com/19384321/34639060-ba25604c-f2d8-11e7-8172-06fa42200f90.PNG)
 
