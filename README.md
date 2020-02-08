@@ -1,4 +1,4 @@
-# Rapid prototyping with MySQL in Spring Boot via Spring Data JPA and Hibernate and AngularJS 1.6
+# Project prototyping with MySQL in Spring Boot via Spring Data JPA and Hibernate and AngularJS 1.6
 This example demonstrates how **Spring Boot**, **Spring Data JPA**,  and in the front-end **AngularJS** can be used together to write web applications easily.
 In this code example I'm demonstrating this by providing a full CRUD-based web application with authentication based on spring security
 
